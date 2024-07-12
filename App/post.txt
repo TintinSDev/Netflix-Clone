@@ -1,0 +1,14 @@
+import pyscopg2
+
+# conn = pyscopg2.connect(host="localhost", database="postgress", user="postgres", password="qwerty")
+# cur = conn.cursor()
+
+
+
+# cur.execute("SELECT * FROM mytable")
+# conn.commit()
+
+# cur.close()
+# conn.close()
+
+# rows = cur.fetchall()
