@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import './logs.css'
 
 function Login({ handleSignIn }) {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -50,6 +51,7 @@ function Login({ handleSignIn }) {
       <form id="login-form" onSubmit={handleSubmit}>
         <div className="login">
           <h2>Login</h2>
+          <label>Email</label>
           <div className="input-box">
             <input
               type="email"
@@ -58,8 +60,9 @@ function Login({ handleSignIn }) {
               value={formData.email}
               onChange={handleInputChange}
             />
-            <label>Email</label>
+            
           </div>
+          <label>Password</label>
           <div className="input-box">
             <input
               type="password"
@@ -68,14 +71,14 @@ function Login({ handleSignIn }) {
               value={formData.password}
               onChange={handleInputChange}
             />
-            <label>Password</label>
+           
           </div>
           <div className="login-forgot">
             <label>
-              <input type="checkbox" />
-              Remember Me!
+              Not a member?
             </label>
-            <a href="#"> Forgot Password </a>
+            <a href="/registration"> Register here ! </a>
+
           </div>
           <button type="submit" className="btn">
             Login

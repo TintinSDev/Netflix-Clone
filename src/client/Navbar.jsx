@@ -8,9 +8,20 @@ function Navbar() {
         <div className="net">    
             <h1>NETFLIX</h1>
         </div>
-        <div className='sign'>
-        <Link to="/login">Sign In</Link>
-        </div>
+        <ul>
+            <li>
+            <div className='sign'>
+            <Link to="/login">Sign In</Link>
+            </div>
+            </li>
+            <li className="home-link">
+            <Link to="/">Home</Link>
+            </li>
+        </ul>
+       
+        
+        
+        
         </nav>
         
     )

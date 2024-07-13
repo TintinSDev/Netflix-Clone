@@ -36,11 +36,26 @@
   text-decoration: none;
   border: none;
   border-radius: 7%;
+  
 }
 .sign :hover{
   color: white;
 }
-
+.home-link{
+  position: absolute;
+  font-weight: 600;
+  font-style: normal;
+  width: 85px;
+  top: 7%;
+  left: 89%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  color: rgb(255, 255, 255);
+  padding: px;
+  text-decoration: none;
+  border: none;
+  border-radius: 7%;
+}
 .net {
   position: absolute;
   top: 7%;
@@ -92,3 +107,11 @@ h1 {
     background-color: #f9f9f9;
   }
 } */
+
+li {
+  display: inline;
+  margin-right: 85px;
+  font-weight: bold, 500;
+  font-size: 17px;
+  font-style: italic;
+}

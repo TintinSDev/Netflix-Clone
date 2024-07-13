@@ -52,6 +52,7 @@ function Registration({ handleRegister }) {
         <ion-icon name="close"></ion-icon>
         <div>
           <h2>Registration</h2>
+          <label>Name</label>
           <div className="reg-box">
             <input
               type="text"
@@ -60,8 +61,9 @@ function Registration({ handleRegister }) {
               value={formData.username}
               onChange={handleInputChange}
             />
-            <label>Username</label>
+           
           </div>
+          <label>Email</label>
           <div className="reg-box">
             <input
               type="email"
@@ -70,8 +72,9 @@ function Registration({ handleRegister }) {
               value={formData.email}
               onChange={handleInputChange}
             />
-            <label>Email</label>
+           
           </div>
+          <label>Password</label>
           <div className="reg-box">
             <input
               type="password"
@@ -80,21 +83,15 @@ function Registration({ handleRegister }) {
               value={formData.password}
               onChange={handleInputChange}
             />
-            <label>Password</label>
+            
           </div>
-          {/* Add a dropdown or radio button for selecting the role */}
-          <div className="reg-box">
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleInputChange}
-            >
-              <option value="">Select Role</option>
-              <option value="admin">Admin</option>
-              <option value="bus_operator">Bus Operator</option>
-            </select>
-            <label>Role</label>
-          </div>
+         <div>
+         <label>
+              Netflix member?
+            </label>
+            <a href="/login" className="reg-pop"> Login here ! </a>
+
+         </div>
           <button type="submit" className="btn">
             Register
           </button>
