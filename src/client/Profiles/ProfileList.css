@@ -8,7 +8,10 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+  .profile-link {
+    text-decoration: none;
+    color: inherit;
+  }
   .profile {
     margin: 10px;
     text-align: center;

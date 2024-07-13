@@ -7,7 +7,7 @@ import AddProfile from "./client/Profiles/AddProfile"
 import Login from "./client/Logins/Login";
 import './App.css'
 import Registration from "./client/Logins/Registration";
-
+// import Movies from "./client/Movies/Movies";
 function App() {
   const [profiles, setProfiles] = useState([
     { name: 'User 1', avatar: '/path/to/avatar1.png' },
@@ -36,6 +36,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfileList profiles={profiles} />} />
         <Route path="/addprofile" element={<AddProfile addProfile={addProfile} />} />
+        {/* <Route
+            path="/movies/:profileId"
+            render={(props) => {
+              const profile = profiles[props.match.params.profileId];
+              return <Movies profile={profile} />;
+            }}
+          /> */}
       </Routes>
     </Router>
   )
