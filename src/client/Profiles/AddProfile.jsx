@@ -22,7 +22,7 @@ const AddProfile = ({ addProfile }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name &&selectedAvatar) {
-      addProfile({ name, selectedAvatar });
+      addProfile({ name, avatar: selectedAvatar });
       setName('');
       setSelectedAvatar('');
       navigate("/profilelist");

@@ -78,7 +78,6 @@ function Login({ handleSignIn }) {
               Not a member?
             </label>
             <a href="/registration"> Register here ! </a>
-
           </div>
           <button type="submit" className="btn">
             Login

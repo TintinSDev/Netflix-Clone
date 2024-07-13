@@ -19,12 +19,35 @@
   .profile {
     margin: 10px;
     text-align: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-name {
+   
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-style: italic, sans-serif;
+    
   }
   h1{
-    color: white;
+    color: red;
     font-style: italic, sans-serif;
     font-weight: 100;
-    color: red;
+  }
+  .profile-heading {
+    color: whitesmoke;
+    font-style: italic, sans-serif;
+    font-weight: 100;
   }
   .profile img {
     width: 100px;
@@ -48,4 +71,35 @@
     display: block;
     margin-top: 10px;
   }
+  .profile-link {
+    display: block;
+    margin-bottom: 5px;
+  }
   
+  .edit-link {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .delete-button:hover .delete-icon {
+    opacity: 0.8;
+  }
+  
+  .delete-icon {
+    transform: scale(0.4);
+    color: red;
+    margin: -33px;
+
+}
+
+
+
