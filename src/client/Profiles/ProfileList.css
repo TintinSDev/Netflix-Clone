@@ -1,0 +1,39 @@
+.profile-list {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .profile {
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .add-profile .add-icon {
+    font-size: 50px;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .add-profile span {
+    display: block;
+    margin-top: 10px;
+  }
+  

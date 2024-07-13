@@ -1,13 +1,22 @@
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './client/Home'
 import Navbar from "./client/Navbar";
-import Profiles from "./client/Profile/Profiles";
-import Login from "./client/Profile/Login";
+import ProfileList from "./client/Profiles/ProfileList";
+import AddProfile from "./client/Profiles/AddProfile"
+import Login from "./client/Logins/Login";
 import './App.css'
-import Registration from "./client/Profile/Registration";
+import Registration from "./client/Logins/Registration";
 
 function App() {
-  
+  const [profiles, setProfiles] = useState([
+    { name: 'User 1', avatar: '/path/to/avatar1.png' },
+    { name: 'User 2', avatar: '/path/to/avatar2.png' },
+  ]);
+
+  const addProfile = (profile) => {
+    setProfiles([...profiles, profile]);
+  };
 
   return (
     <Router>
@@ -25,7 +34,8 @@ function App() {
           />
 
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profiles />} />
+        <Route path="/profile" element={<ProfileList profiles={profiles} />} />
+        <Route path="/addprofile" element={<AddProfile addProfile={addProfile} />} />
       </Routes>
     </Router>
   )

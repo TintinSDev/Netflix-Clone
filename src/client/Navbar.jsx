@@ -17,6 +17,9 @@ function Navbar() {
             <li className="home-link">
             <Link to="/">Home</Link>
             </li>
+            <li>
+            <Link to="/profilelist">ProfileList</Link>
+            </li>
         </ul>
        
         
