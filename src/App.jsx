@@ -4,6 +4,7 @@ import Home from './client/Home'
 import Navbar from "./client/Navbar";
 import ProfileList from "./client/Profiles/ProfileList";
 import AddProfile from "./client/Profiles/AddProfile"
+import EditProfile from "./client/Profiles/EditProfile"
 import Login from "./client/Logins/Login";
 import './App.css'
 import Registration from "./client/Logins/Registration";
@@ -15,7 +16,17 @@ function App() {
   ]);
 
   const addProfile = (profile) => {
-    setProfiles([...profiles, profile]);
+    if (profiles.length < 4){
+      setProfiles([...profiles, profile]);
+    } else {
+      alert ("Maximum number of profiles reached");
+    }
+   
+  };
+  const updateProfile = (index, updatedProfile) => {
+    const updatedProfiles = [...profiles];
+    updatedProfiles[index] = updatedProfile;
+    setProfiles(updatedProfiles);
   };
 
   return (
@@ -34,8 +45,9 @@ function App() {
           />
 
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<ProfileList profiles={profiles} />} />
+        <Route path="/profilelist" element={<ProfileList profiles={profiles} />} />
         <Route path="/addprofile" element={<AddProfile addProfile={addProfile} />} />
+        <Route path="/edit-profile/:profileId" element={<EditProfile profiles={profiles} updateProfile={updateProfile} />} />
         {/* <Route
             path="/movies/:profileId"
             render={(props) => {

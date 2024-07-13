@@ -1,6 +1,10 @@
 .profile-list {
     text-align: center;
     margin: 20px;
+    left: 50%;
+    top: 190px;
+    background: transparent;
+    position:relative;
   }
   
   .profiles {
@@ -16,7 +20,12 @@
     margin: 10px;
     text-align: center;
   }
-  
+  h1{
+    color: white;
+    font-style: italic, sans-serif;
+    font-weight: 100;
+    color: red;
+  }
   .profile img {
     width: 100px;
     height: 100px;

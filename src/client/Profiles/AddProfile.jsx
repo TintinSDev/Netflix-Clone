@@ -1,20 +1,31 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import './AddProfile.css';
 
+
+const avatars = [
+  '/src/client/Profiles/icons/avatar1.png',
+  '/src/client/Profiles/icons/avatar2.png',
+  '/src/client/Profiles/icons/avatar3.png',
+  '/src/client/Profiles/icons/avatar4.png',
+  '/src/client/Profiles/icons/avatar5.png',
+  '/src/client/Profiles/icons/avatar6.png',
+  '/src/client/Profiles/icons/avatar7.png',
+  '/src/client/Profiles/icons/avatar8.png',
+];
 const AddProfile = ({ addProfile }) => {
   const [name, setName] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const history = useHistory();
+  const [selectedAvatar, setSelectedAvatar] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && avatar) {
-      addProfile({ name, avatar });
+    if (name &&selectedAvatar) {
+      addProfile({ name, selectedAvatar });
       setName('');
-      setAvatar('');
-      history.push('/');
+      setSelectedAvatar('');
+      navigate("/profilelist");
     }
   };
 
@@ -29,13 +40,18 @@ const AddProfile = ({ addProfile }) => {
           onChange={(e) => setName(e.target.value)} 
           required 
         />
-        <input 
-          type="text" 
-          placeholder="Avatar URL" 
-          value={avatar} 
-          onChange={(e) => setAvatar(e.target.value)} 
-          required 
-        />
+        <div className="avatar-selection">
+          {avatars.map((avatar, index) => (
+            <img 
+              key={index} 
+              src={avatar} 
+              alt={`Avatar ${index + 1}`} 
+              className={`avatar ${selectedAvatar === avatar ? 'selected' : ''}`} 
+              onClick={() => setSelectedAvatar(avatar)}
+               
+            />
+          ))}
+        </div>
         <button type="submit">Add Profile</button>
       </form>
     </div>

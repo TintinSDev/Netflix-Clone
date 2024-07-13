@@ -14,7 +14,25 @@
     padding: 10px;
     width: 300px;
   }
+  .avatar-selection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
   
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .avatar.selected {
+    border-color: blue;
+  }
   .add-profile button {
     padding: 10px 20px;
     cursor: pointer;
