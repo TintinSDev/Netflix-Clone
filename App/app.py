@@ -6,13 +6,24 @@ from flask_cors import CORS, cross_origin
 from werkzeug.security import generate_password_hash
 import os
 import logging
+from dotenv import load_dotenv
 from os import environ
+import resend
+
+resend.api_key = os.environ["RESEND_API_KEY"]
+
 
 logging.basicConfig(level=logging.DEBUG)
 
+load_dotenv()
+
+
 app = Flask(__name__)
 api = Api(app)
-# Init db
+
+#API_KEY = environ.get('RESEND_API_KEY')
+
+# resend = Resend('re_MAmoPkk5_Dg4USAzdGwSoVGFNVZi434jA')
 
 BASEDIR = os.path.join(os.path.dirname(__file__))
 
@@ -63,6 +74,20 @@ def handle_payments_options():
 @app.route('/')
 def index():
     return 'Welcome to Tinflix'
+
+@app.route('/send-email', methods=['POST'])
+def send_email():
+    params: resend.Emails.SendParams = {
+        "from": "Acme <onboarding@resend.dev>",
+        "to": ["delivered@resend.dev"],
+        "subject": "Welcome to Tinflix",
+        "html": "<strong>Welcome to Tinflix</strong>",
+    }
+
+    r = resend.Emails.send(params)
+    return jsonify(r)
+
+
 
 @app.route('/register', methods=['POST'])
 def register():
