@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Registration({ handleRegister }) {
   const navigate = useNavigate();
@@ -88,7 +88,8 @@ function Registration({ handleRegister }) {
          <label>
               Netflix member?
             </label>
-            <a href="/login" className="reg-pop"> Login here ! </a>
+            {/* <a href="/login" className="reg-pop"> Login here ! </a> */}
+            <Link to="/login" className="reg-pop" > Register here ! </Link>
 
          </div>
           <button type="submit" className="btn">
