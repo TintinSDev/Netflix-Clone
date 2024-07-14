@@ -34,22 +34,21 @@ function Registration({ handleRegister }) {
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Registration Successful");
+        alert("Registration Successful 😁 ");
         handleRegister(); // Call the handleRegister function passed as a prop
         navigate("/login"); // Redirect to the login page after successful registration
       } else {
-        alert(data.error || "An error occurred during registration");
+        alert(data.error || "An error occurred during registration 😣");
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("An error occurred during registration.");
+      alert("An error occurred during registration. 😣");
     }
   };
 
   return (
     <div className="wrapper">
       <form id="registration-form" onSubmit={handleSubmit}>
-        <ion-icon name="close"></ion-icon>
         <div>
           <h2>Registration</h2>
           <label>Username</label>

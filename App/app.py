@@ -87,6 +87,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
+        print("User registered successfully!") #Debbuging statement
         return jsonify({'message': 'User registered successfully'}), 201
     except Exception as e:
         logging.error(f"Error during registration: {e}")
