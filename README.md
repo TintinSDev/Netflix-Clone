@@ -15,3 +15,5 @@ Pipenv found itself running within a virtual environment, so it will automatical
 
 export FLASK_APP=app.py
 export FLASK_ENV=development  # Optional: enables debug mode and auto-reload
+
+/home/martin/Screenshots/tinflix.png
