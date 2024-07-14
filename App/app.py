@@ -6,17 +6,18 @@ from flask_cors import CORS, cross_origin
 from werkzeug.security import generate_password_hash
 import os
 import logging
-from dotenv import load_dotenv
+
 from os import environ
 import resend
 
-resend.api_key = os.environ["RESEND_API_KEY"]
 
-
-logging.basicConfig(level=logging.DEBUG)
-
+from dotenv import load_dotenv
 load_dotenv()
 
+resend.api_key = os.environ["RESEND_API_KEY"] #export in the terminal export RESEND_API_KEY='re_YQT3zb5C_9pkqXYBdQWWKveUHqZGp57eW'
+logging.basicConfig(level=logging.DEBUG)
+
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 app = Flask(__name__)
 api = Api(app)
@@ -48,7 +49,28 @@ db.init_app(app)
 ma.init_app(app)
 with app.app_context():
     db.create_all()
-    
+# @app.route('/send-email', methods=['POST'])
+# def send_email():
+#     data = request.get_json()
+#     email = data.get('email')
+
+#     if not email:
+#         return jsonify({"error": "Email is required"}), 400
+
+#     params = {
+#         "from": "TINFLIX <onboarding@resend.dev>",
+#         "to": [email],  # Use the email from the request
+#         "subject": "Welcome to Tinflix",
+#         "html": "<strong>Welcome to Tinflix!</strong>",  # No personalization
+#     }
+
+#     try:
+#         r = resend.Emails.send(params)
+#         return jsonify({"message": "Email sent successfully!"}), 200
+#     except Exception as e:
+#         print(f"Error sending email: {e}")
+#         return jsonify({"error": "Failed to send email"}), 500
+   
 # @app.route('/')
 # def root():
 #     return send_file(os.path.join(BASEDIR,'static/index.html'))
@@ -83,40 +105,40 @@ def handle_payments_options():
 def index():
     return 'Welcome to Tinflix'
 
-# @app.route('/send-email', methods=['POST'])
-# def send_email():
-#     params: resend.Emails.SendParams = {
-#         "from": "TINFLIX <onboarding@resend.dev>",
-#         "to": ["mmaina290@gmail.com"],
-#         "subject": "Welcome to Tinflix",
-#         "html": "<strong>Welcome to Tinflix</strong>",
-#     }
-
-#     r = resend.Emails.send(params)
-#     return jsonify(r)
-
 @app.route('/send-email', methods=['POST'])
 def send_email():
-    data = request.get_json()
-    name = data.get('name')
-    email = data.get('email')
-
-    if not email or not name:
-        return jsonify({"error": "Name and email are required"}), 400
-
-    params = {
+    params: resend.Emails.SendParams = {
         "from": "TINFLIX <onboarding@resend.dev>",
-        "to": [email],  # Use the email from the request
+        "to": ["ludhrk@gmail.com"],
         "subject": "Welcome to Tinflix",
-        "html": f"<strong>Welcome to Tinflix, {name}!</strong>",  # Personalize the message
+        "html": "<strong>Welcome to Tinflix</strong>",
     }
 
-    try:
-        response = resend.emails.send(**params)
-        return jsonify({"message": "Email sent successfully!", "response": response}), 200
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        return jsonify({"error": "Failed to send email"}), 500
+    r = resend.Emails.send(params)
+    return jsonify(r)
+
+# @app.route('/send-email', methods=['POST'])
+# def send_email():
+#     data = request.get_json()
+#     # name = data.get('name')
+#     email = data.get('email')
+
+#     if not email:
+#         return jsonify({"error": "Email is required"}), 400
+
+#     params: resend.Emails.SendParams = {
+#         "from": "TINFLIX <onboarding@resend.dev>",
+#         "to": [email],  # Use the email from the request
+#         "subject": "Welcome to Tinflix",
+#         "html": f"<strong>Welcome to Tinflix,!</strong>",  # Personalize the message
+#     }
+
+#     try:
+#         response = resend.emails.send(**params)
+#         return jsonify({"message": "Email sent successfully!", "response": response}), 200
+#     except Exception as e:
+#         print(f"Error sending email: {e}")
+#         return jsonify({"error": "Failed to send email"}), 500
 @app.route('/register', methods=['POST'])
 def register():
     try:
