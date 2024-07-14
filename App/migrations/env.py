@@ -1,6 +1,8 @@
 import logging
 from logging.config import fileConfig
-
+from sqlalchemy import engine_from_config, pool
+from logging.config import fileConfig
+import os
 from flask import current_app
 
 from alembic import context
@@ -36,6 +38,7 @@ def get_engine_url():
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+from models import db
 config.set_main_option('sqlalchemy.url', get_engine_url())
 target_db = current_app.extensions['migrate'].db
 

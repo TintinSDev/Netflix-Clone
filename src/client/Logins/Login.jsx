@@ -32,7 +32,7 @@ function Login({ handleSignIn }) {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Login Successful");
+        alert("Welcome to Tinflix");
 
         // Redirect to the home page or any other desired page
         handleSignIn();

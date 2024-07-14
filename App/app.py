@@ -15,12 +15,12 @@ api = Api(app)
 BASEDIR = os.path.join(os.path.dirname(__file__))
 
 # Database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@localhost:5432/netflix.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@localhost:5432/netflix'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-CORS(app)
+# CORS(app)
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
-CORS(app, origins="http://127.0.0.1:5173")
+# CORS(app, origins="http://127.0.0.1:5173")
 
 migrate = Migrate(app, db)
 db.init_app(app)
@@ -28,16 +28,16 @@ ma.init_app(app)
 with app.app_context():
     db.create_all()
     
-@app.route('/')
-def root():
-    return send_file(os.path.join(BASEDIR,'static/index.html'))
+# @app.route('/')
+# def root():
+#     return send_file(os.path.join(BASEDIR,'static/index.html'))
 
-@app.route('/<path:path>')
-def static_assets(path):
-    if os.path.exists(os.path.join(BASEDIR, 'static', path)):
-        return send_from_directory (os.path.join(BASEDIR, 'static'), path)
-    else:
-        return send_from_directory (os.path.join(BASEDIR,'static/index.html'), path)
+# @app.route('/<path:path>')
+# def static_assets(path):
+#     if os.path.exists(os.path.join(BASEDIR, 'static', path)):
+#         return send_from_directory (os.path.join(BASEDIR, 'static'), path)
+#     else:
+#         return send_from_directory (os.path.join(BASEDIR,'static/index.html'), path)
 
 
 

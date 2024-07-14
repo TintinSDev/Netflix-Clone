@@ -12,3 +12,6 @@ python3 -m venv myenv
 source myenv/bin/activate
 pip install psycopg2-binary
 Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set PIPENV_IGNORE_VIRTUALENVS=1 to force pipenv to ignore that environment and create its own instead. You can set PIPENV_VERBOSITY=-1 to suppress this warning.
+
+export FLASK_APP=app.py
+export FLASK_ENV=development  # Optional: enables debug mode and auto-reload
