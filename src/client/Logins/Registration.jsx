@@ -52,7 +52,7 @@ function Registration({ handleRegister }) {
         <ion-icon name="close"></ion-icon>
         <div>
           <h2>Registration</h2>
-          <label>Name</label>
+          <label>Username</label>
           <div className="reg-box">
             <input
               type="text"

@@ -1,4 +1,4 @@
-#!/home/martin/Projects/Netflix/tinflix/App/myenv/bin/python
+#!/home/martin/Projects/Netflix/tinflix/App/myenv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
