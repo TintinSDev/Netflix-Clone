@@ -109,9 +109,9 @@ def index():
 def send_email():
     params: resend.Emails.SendParams = {
         "from": "TINFLIX <onboarding@resend.dev>",
-        "to": ["ludhrk@gmail.com"],
-        "subject": "Welcome to Tinflix",
-        "html": "<strong>Welcome to Tinflix</strong>",
+        "to": ["mmaina290@gmail.com"],
+        "subject": "Welcome to Tinflix. ",
+        "html": "<strong>Welcome. Enjoy watching unlimited movies and TV shows on Tinflix. </strong>",
     }
 
     r = resend.Emails.send(params)
