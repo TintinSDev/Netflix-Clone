@@ -6,12 +6,12 @@ const app = express();
 app.use(express.json());
 
 app.post('/send-email', async (req, res) => {
-    const { name, email } = req.body;
+    const { email } = req.body;
 
     try {
         // Ensure email and name are provided
-        if (!email || !name) {
-            return res.status(400).send({ error: 'Name and email are required' });
+        if (!email) {
+            return res.status(400).send({ error: 'Email are required' });
         }
 
         await sendEmail(email, "Welcome to our service!");

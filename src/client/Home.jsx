@@ -20,6 +20,22 @@ function Home() {
       await sendEmail(email, message);
       alert("Email sent successfully!");
 
+      // Clear the input field
+      setEmail("");
+       // Record email sending event in the backend
+       const response = await fetch('http://localhost:5000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email }),
+      });
+
+      if (response.ok) {
+        alert('Email event recorded successfully!');
+      } else {
+        throw new Error('Failed to record email event.');
+      }
       // Navigate to /login
       navigate("/login");
       

@@ -35,6 +35,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 # CORS(app, origins="http://127.0.0.1:5173")
 
+def use(req, res, next):
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+
+app.use = use
+
+
 migrate = Migrate(app, db)
 db.init_app(app)
 ma.init_app(app)
@@ -63,7 +71,7 @@ def handle_options():
     }
     
 
-@app.route('/profilelist', methods=['OPTIONS'])
+@app.route('/send-email', methods=['OPTIONS'])
 def handle_payments_options():
     return jsonify(), 200, {
         'Access-Control-Allow-Origin': '*',
@@ -78,8 +86,8 @@ def index():
 @app.route('/send-email', methods=['POST'])
 def send_email():
     params: resend.Emails.SendParams = {
-        "from": "Acme <onboarding@resend.dev>",
-        "to": ["delivered@resend.dev"],
+        "from": "TINFLIX <onboarding@resend.dev>",
+        "to": ["mmaina290@gmail.com"],
         "subject": "Welcome to Tinflix",
         "html": "<strong>Welcome to Tinflix</strong>",
     }
