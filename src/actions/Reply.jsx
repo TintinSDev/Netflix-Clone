@@ -13,9 +13,10 @@ export const sendEmail = (email, message) => async () => {
     body: JSON.stringify({
       from: 'TintinSDev Web 😃 <onboarding@resend.dev>',
       to: [email],
-      subject: 'Welcome to Tinflix',
+      subject: 'Welcome to Tinflix ${email} 😁',
       html: `
-        <h5>Welcome to Tinflix 😁</h5>
+        <h5>Welcome to Tinflix ${email} 😁</h5>
+        <p>Hi ${email},</p>
         <p>${message}</p>
       `,
     }),

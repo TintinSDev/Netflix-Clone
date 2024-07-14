@@ -9,6 +9,7 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const name = "User";
     const message = "Welcome to Tinflix 😁";
 
     if (!email) {
@@ -17,7 +18,7 @@ function Home() {
     }
     
     try {
-      await sendEmail(email, message);
+      await sendEmail( email, message);
       alert("Email sent successfully!");
 
       // Clear the input field
@@ -28,7 +29,7 @@ function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ email }),
       });
 
       if (response.ok) {

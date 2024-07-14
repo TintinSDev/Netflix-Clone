@@ -83,20 +83,40 @@ def handle_payments_options():
 def index():
     return 'Welcome to Tinflix'
 
+# @app.route('/send-email', methods=['POST'])
+# def send_email():
+#     params: resend.Emails.SendParams = {
+#         "from": "TINFLIX <onboarding@resend.dev>",
+#         "to": ["mmaina290@gmail.com"],
+#         "subject": "Welcome to Tinflix",
+#         "html": "<strong>Welcome to Tinflix</strong>",
+#     }
+
+#     r = resend.Emails.send(params)
+#     return jsonify(r)
+
 @app.route('/send-email', methods=['POST'])
 def send_email():
-    params: resend.Emails.SendParams = {
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+
+    if not email or not name:
+        return jsonify({"error": "Name and email are required"}), 400
+
+    params = {
         "from": "TINFLIX <onboarding@resend.dev>",
-        "to": ["mmaina290@gmail.com"],
+        "to": [email],  # Use the email from the request
         "subject": "Welcome to Tinflix",
-        "html": "<strong>Welcome to Tinflix</strong>",
+        "html": f"<strong>Welcome to Tinflix, {name}!</strong>",  # Personalize the message
     }
 
-    r = resend.Emails.send(params)
-    return jsonify(r)
-
-
-
+    try:
+        response = resend.emails.send(**params)
+        return jsonify({"message": "Email sent successfully!", "response": response}), 200
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({"error": "Failed to send email"}), 500
 @app.route('/register', methods=['POST'])
 def register():
     try:
