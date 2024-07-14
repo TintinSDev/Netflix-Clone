@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './logs.css'
 
 function Login({ handleSignIn }) {
@@ -77,7 +77,8 @@ function Login({ handleSignIn }) {
             <label>
               Not a member?
             </label>
-            <a href="/registration"> Register here ! </a>
+            {/* <a href="/registration"> Register here ! </a> */}
+            <Link to="/registration"> Register here ! </Link>
           </div>
           <button type="submit" className="btn">
             Login
