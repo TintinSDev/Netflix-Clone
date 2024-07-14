@@ -32,17 +32,17 @@ function Login({ handleSignIn }) {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Welcome to Tinflix");
+        alert("Login Success.Welcome to Tinflix 😁");
 
         // Redirect to the home page or any other desired page
         handleSignIn();
         navigate("/profilelist"); // This will navigate the user to the home page after successful login
       } else {
-        alert(data.error || "Invalid email address or password");
+        alert(data.error || "Invalid email address or password 😵");
       }
     } catch (error) {
       console.error("Error during login:", error);
-      alert("An error occurred during login.");
+      alert("An error occurred during login.😵");
     }
   };
 
