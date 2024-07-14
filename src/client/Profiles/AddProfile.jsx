@@ -30,7 +30,7 @@ const AddProfile = ({ addProfile }) => {
   };
 
   return (
-    <div className="add-profile">
+    <div className="add-profile-container">
       <h2>Add Profile</h2>
       <form onSubmit={handleSubmit}>
         <input 

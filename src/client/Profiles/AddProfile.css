@@ -1,15 +1,20 @@
-.add-profile {
+.add-profile-container {
+    text-align: center;
     text-align: center;
     margin: 20px;
+    left: 50%;
+    top: 190px;
+    background: transparent;
+    position:relative;
   }
   
-  .add-profile form {
+  .add-profile-container form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .add-profile input {
+  .add-profile-container input {
     margin: 10px;
     padding: 10px;
     width: 300px;
@@ -33,8 +38,17 @@
   .avatar.selected {
     border-color: blue;
   }
-  .add-profile button {
+  h2 {
+    color: red;
+  }
+  .avatar:hover {
+    border-color: rgb(231, 231, 241);
+  }
+  .add-profile-container button {
     padding: 10px 20px;
     cursor: pointer;
+    background-color: red;
+    border: none;
+    max-width: max-content;
   }
   

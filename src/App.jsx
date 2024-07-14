@@ -10,6 +10,30 @@ import "./App.css";
 import Registration from "./client/Logins/Registration";
 // import Movies from "./client/Movies/Movies";
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    checkStorage();
+    return () => {};
+  }, []);
+
+  function checkStorage() {
+    if (localStorage.getItem('user')) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
+
+  const handleSignOut = () => {
+    // Logic to handle user sign out
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+  };
+
+
+
   const [profiles, setProfiles] = useState(() => {
     const savedProfiles = localStorage.getItem("profiles");
     return savedProfiles ? JSON.parse(savedProfiles) : [];
@@ -42,35 +66,35 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar  isLoggedIn={isLoggedIn} handleSignOut={handleSignOut} />
 
       <Routes>
         <Route
           path="/registration"
           element={<Registration handleRegister={() => {}} />}
         />
-        <Route path="/login" element={<Login handleSignIn={() => {}} />} />
+        <Route path="/login" element={<Login handleSignIn={() => setIsLoggedIn (true)} />} />
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home handleSignIn={() => setIsLoggedIn (true)} />} />
         <Route
           path="/profilelist"
-          element={<ProfileList profiles={profiles} deleteProfile={deleteProfile} />}
+          element={<ProfileList handleSignIn={() => setIsLoggedIn (true)} profiles={profiles} deleteProfile={deleteProfile} />}
         />
         <Route
           path="/addprofile"
-          element={<AddProfile addProfile={addProfile} />}
+          element={<AddProfile handleSignIn={() => setIsLoggedIn (true)} addProfile={addProfile} />}
         />
         <Route
           path="/edit-profile/:profileId"
           element={
-            <EditProfile profiles={profiles} updateProfile={updateProfile} />
+            <EditProfile handleSignIn={() => setIsLoggedIn (true)} profiles={profiles} updateProfile={updateProfile} />
           }
         />
         {/* <Route
             path="/movies/:profileId"
             render={(props) => {
               const profile = profiles[props.match.params.profileId];
-              return <Movies profile={profile} />;
+              return <Movies handleSignIn={() => setIsLoggedIn (true)} {...props} key={props.match.params.profileId}   profile={profile} />;
             }}
           /> */}
       </Routes>
