@@ -49,28 +49,7 @@ db.init_app(app)
 ma.init_app(app)
 with app.app_context():
     db.create_all()
-# @app.route('/send-email', methods=['POST'])
-# def send_email():
-#     data = request.get_json()
-#     email = data.get('email')
-
-#     if not email:
-#         return jsonify({"error": "Email is required"}), 400
-
-#     params = {
-#         "from": "TINFLIX <onboarding@resend.dev>",
-#         "to": [email],  # Use the email from the request
-#         "subject": "Welcome to Tinflix",
-#         "html": "<strong>Welcome to Tinflix!</strong>",  # No personalization
-#     }
-
-#     try:
-#         r = resend.Emails.send(params)
-#         return jsonify({"message": "Email sent successfully!"}), 200
-#     except Exception as e:
-#         print(f"Error sending email: {e}")
-#         return jsonify({"error": "Failed to send email"}), 500
-   
+    
 # @app.route('/')
 # def root():
 #     return send_file(os.path.join(BASEDIR,'static/index.html'))
@@ -81,7 +60,6 @@ with app.app_context():
 #         return send_from_directory (os.path.join(BASEDIR, 'static'), path)
 #     else:
 #         return send_from_directory (os.path.join(BASEDIR,'static/index.html'), path)
-
 
 
 @app.route('/movies', methods=['OPTIONS'])
@@ -105,40 +83,42 @@ def handle_payments_options():
 def index():
     return 'Welcome to Tinflix'
 
-@app.route('/send-email', methods=['POST'])
-def send_email():
-    params: resend.Emails.SendParams = {
-        "from": "TINFLIX <onboarding@resend.dev>",
-        "to": ["mmaina290@gmail.com"],
-        "subject": "Welcome to Tinflix. ",
-        "html": "<strong>Welcome. Enjoy watching unlimited movies and TV shows on Tinflix. </strong>",
-    }
-
-    r = resend.Emails.send(params)
-    return jsonify(r)
-
 # @app.route('/send-email', methods=['POST'])
 # def send_email():
-#     data = request.get_json()
-#     # name = data.get('name')
-#     email = data.get('email')
-
-#     if not email:
-#         return jsonify({"error": "Email is required"}), 400
-
 #     params: resend.Emails.SendParams = {
-#         "from": "TINFLIX <onboarding@resend.dev>",
-#         "to": [email],  # Use the email from the request
-#         "subject": "Welcome to Tinflix",
-#         "html": f"<strong>Welcome to Tinflix,!</strong>",  # Personalize the message
+#         "from": "TINFLIX <onboarding@martinmaina.dev>",
+#         "to": ["mmaina290@gmail.com"],
+#         "cc": ["ludhrk@gmail.com"],
+#         "subject": "Welcome to Tinflix. ",
+#         "html": "<strong>Welcome. Enjoy watching unlimited movies and TV shows on Tinflix. </strong>",
 #     }
 
-#     try:
-#         response = resend.emails.send(**params)
-#         return jsonify({"message": "Email sent successfully!", "response": response}), 200
-#     except Exception as e:
-#         print(f"Error sending email: {e}")
-#         return jsonify({"error": "Failed to send email"}), 500
+#     r = resend.Emails.send(params)
+#     return jsonify(r)
+print(dir(resend.emails))
+
+@app.route('/send-email', methods=['POST'])
+def send_email():
+    data = request.get_json()
+    email = data.get('email')
+
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+
+    params: resend.Emails.SendParams  = {
+        "from": "TINFLIX <ludhrk@gmail.com>",
+        "to": [email],
+        "cc": ["mmaina290@gmail.com"],
+        "subject": "Welcome to Tinflix",
+        "html":"<strong>Welcome to Tinflix!</strong>",
+    }
+
+    try:
+        response = resend.Emails.SendParams(**params)  # Adjust this line based on the correct usage from the 'resend' module documentation
+        return jsonify({"message": "Email sent successfully!", "response": response}), 200
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({"error": "Failed to send email"}), 500
 @app.route('/register', methods=['POST'])
 def register():
     try:

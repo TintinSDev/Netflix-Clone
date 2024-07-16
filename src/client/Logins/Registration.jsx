@@ -8,7 +8,6 @@ function Registration({ handleRegister }) {
     username: "",
     email: "",
     password: "",
-    role: "", // Add a role field
   });
 
   const handleInputChange = (e) => {
@@ -89,7 +88,7 @@ function Registration({ handleRegister }) {
               Netflix member?
             </label>
             {/* <a href="/login" className="reg-pop"> Login here ! </a> */}
-            <Link to="/login" className="reg-pop" > Register here ! </Link>
+            <Link to="/login" className="reg-pop" > Login here ! </Link>
 
          </div>
           <button type="submit" className="btn">
