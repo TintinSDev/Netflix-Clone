@@ -80,5 +80,17 @@ martin@tintin:~/Projects/Netflix/tinflix$ sudo tail -f /var/log/postgresql/postg
 2024-07-17 19:13:47.715 EAT [183772] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.2000"
 2024-07-17 19:13:47.730 EAT [183774] LOG:  database system was shut down at 2024-07-17 19:13:47 EAT
 2024-07-17 19:13:47.747 EAT [183772] LOG:  database system is ready to accept connections
+Interface Details
+Interface: wlp2s0
+Status: UP
+Assigned IPs:
+192.168.0.106/24 (local network)
+38.182.86.186/32 (public IP)
 
+Assign the IP Address:
+
+sh
+Copy code
+sudo ip addr add 38.182.86.186/24 dev wlp2s0
+Adjust the subnet mask (/24 in this case) as needed.
 
