@@ -124,7 +124,7 @@ def send_email():
     except Exception as e:
         print(f"Error sending email: {e}")
         return jsonify({"error": "Failed to send email"}), 500
-@app.route('/api/register', methods=['POST'])
+@app.route('api/register', methods=['POST'])
 def register():
     try:
         data = request.get_json()
@@ -155,7 +155,7 @@ def register():
     
     
 # User login route
-@app.route('/api/login', methods=['POST'])
+@app.route('api/login', methods=['POST'])
 def login():
     data = request.get_json()
     email = data.get('email')
