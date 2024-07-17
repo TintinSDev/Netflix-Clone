@@ -69,5 +69,16 @@ sudo ufw reload
 test on remote
 psql -h 38.182.86.186 -p 2000 -U postgres -d netflix
 
+martin@tintin:~/Projects/Netflix/tinflix$ sudo tail -f /var/log/postgresql/postgresql-14-main.log
+2024-07-17 19:13:47.122 EAT [162804] LOG:  background worker "logical replication launcher" (PID 162815) exited with exit code 1
+2024-07-17 19:13:47.122 EAT [162810] LOG:  shutting down
+2024-07-17 19:13:47.153 EAT [162804] LOG:  database system is shut down
+2024-07-17 19:13:47.713 EAT [183772] LOG:  starting PostgreSQL 14.12 (Ubuntu 14.12-1.pgdg24.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0, 64-bit
+2024-07-17 19:13:47.713 EAT [183772] LOG:  listening on IPv4 address "127.0.0.1", port 2000
+2024-07-17 19:13:47.714 EAT [183772] LOG:  listening on IPv4 address "192.168.0.106", port 2000
+2024-07-17 19:13:47.714 EAT [183772] LOG:  listening on IPv4 address "38.182.86.186", port 2000
+2024-07-17 19:13:47.715 EAT [183772] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.2000"
+2024-07-17 19:13:47.730 EAT [183774] LOG:  database system was shut down at 2024-07-17 19:13:47 EAT
+2024-07-17 19:13:47.747 EAT [183772] LOG:  database system is ready to accept connections
 
 
