@@ -24,7 +24,8 @@ function Home() {
       // Clear the input field
       setEmail("");
        // Record email sending event in the backend
-       const response = await fetch('http://localhost:5000/send-email', {
+      //  const response = await fetch('http://localhost:5000/send-email', {
+      const response = await fetch('https://tinflix.vercel.app/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
