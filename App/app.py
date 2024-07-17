@@ -29,7 +29,12 @@ api = Api(app)
 BASEDIR = os.path.join(os.path.dirname(__file__))
 
 # Database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@localhost:5432/netflix'
+# For local connection
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@localhost:2000/netflix'
+
+# For remote connection
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@38.182.86.186:2000/netflix'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # CORS(app)

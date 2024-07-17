@@ -1,0 +1,73 @@
+To configure PostgreSQL to allow connections from pgAdmin through a specific host address and port, you'll need to:
+
+Edit the pg_hba.conf file to allow connections from the specified IP address.
+Edit the postgresql.conf file to listen on the specified IP address and port.
+Restart PostgreSQL to apply the changes.
+Step 1: Edit pg_hba.conf
+Add a line to the pg_hba.conf file to allow connections from the desired IP address. For example, if you want to allow connections from IP 38.182.86.186, add the following line:
+
+conf
+Copy code
+host    all             all             38.182.86.186/32           md5
+Step 2: Edit postgresql.conf
+Allow PostgreSQL to listen on the specified IP address:
+Open the postgresql.conf file and find the listen_addresses setting. Modify it to include the desired IP address, or use '*' to allow connections on all IP addresses:
+
+conf
+Copy code
+listen_addresses = '*'
+Set the port:
+Set the port number in the postgresql.conf file. PostgreSQL can only listen on one port at a time, so choose one of the provided ports (2000, 2333, or 2340). For example, to use port 2000:
+
+conf
+Copy code
+port = 2000
+Step 3: Restart PostgreSQL
+After making these changes, restart the PostgreSQL service to apply the new settings:
+
+sh
+Copy code
+sudo systemctl restart postgresql
+Summary
+To allow pgAdmin to connect to your PostgreSQL instance on IP 38.182.86.186 and port 2000, ensure your configuration files have the following settings:
+
+In pg_hba.conf:
+conf
+Copy code
+host    all             all             38.182.86.186/32           md5
+In postgresql.conf:
+conf
+Copy code
+listen_addresses = '*'
+port = 2000
+After making these changes and restarting PostgreSQL, you should be able to connect using pgAdmin with the host address 38.182.86.186 and port 2000.
+
+If you encounter any issues, check the PostgreSQL logs for more information and ensure that your firewall settings allow connections on the specified port.
+
+PostgreSQL Service Status:
+Ensure the PostgreSQL service is running and listening on the specified port:
+
+sh
+Copy code
+sudo systemctl status postgresql
+Firewall and Network Settings:
+Make sure no firewall rules are blocking access to port 2000.
+
+PostgreSQL Logs:
+Check PostgreSQL logs for any connection-related errors:
+
+sh
+Copy code
+sudo tail -f /var/log/postgresql/postgresql-14-main.log
+By ensuring these configurations and settings, your Flask application should be able to connect to your PostgreSQL database using SQLAlchemy.
+Check Firewall Settings:
+Make sure your firewall is not blocking port 2000. You may need to open the port using the following commands (if you are using UFW):
+
+sudo ufw allow 2000/tcp
+sudo ufw reload
+
+test on remote
+psql -h 38.182.86.186 -p 2000 -U postgres -d netflix
+
+
+
