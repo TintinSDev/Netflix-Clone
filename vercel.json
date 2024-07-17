@@ -1,11 +1,11 @@
 {
     "builds": [
       {
-        "src": "app/**/*.py",
+        "src": "App/**/*.py",
         "use": "@vercel/python"
       },
       {
-        "src": "src/app.js",
+        "src": "src/App.jsx",
         "use": "@vercel/static-build",
         "config": { "distDir": "build" }
       }
