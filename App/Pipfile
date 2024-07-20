@@ -29,6 +29,7 @@ packaging = "==24.1"
 pytz = "==2024.1"
 six = "==1.16.0"
 typing-extensions = "==4.12.2"
+marshmallow-sqlalchemy = "*"
 
 [dev-packages]
 

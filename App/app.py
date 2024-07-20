@@ -39,7 +39,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # CORS(app)
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
-CORS(app, origins=["https://tinflix.vercel.app"])
+# CORS(app, origins=["https://tinflix.vercel.app"])
 
 def use(req, res, next):
     res.header("Access-Control-Allow-Origin", "*")
@@ -102,7 +102,7 @@ def index():
 #     return jsonify(r)
 print(dir(resend.emails))
 
-@app.route('/api/send-email', methods=['POST'])
+@app.route('/send-email', methods=['POST'])
 def send_email():
     data = request.get_json()
     email = data.get('email')
@@ -124,7 +124,7 @@ def send_email():
     except Exception as e:
         print(f"Error sending email: {e}")
         return jsonify({"error": "Failed to send email"}), 500
-@app.route('/api/register', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def register():
     try:
         data = request.get_json()
@@ -155,7 +155,7 @@ def register():
     
     
 # User login route
-@app.route('/api/login', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     email = data.get('email')
