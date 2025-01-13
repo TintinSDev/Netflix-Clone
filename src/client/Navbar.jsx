@@ -5,7 +5,7 @@ function Navbar({ isLoggedIn, handleSignOut}) {
   return (
     <nav>
       <div className="net">
-        <h1>TINFLIX</h1>
+        <span>TINFLIX</span>
       </div>
       <ul>
         {!isLoggedIn && (

@@ -16,7 +16,7 @@
     overflow: hidden;
     transform: scale(1);
     transform-origin: center;
-    border-color: red;
+    border-color: rgb(243, 97, 97);
 }
  .btn {
   margin-top: 20px;
