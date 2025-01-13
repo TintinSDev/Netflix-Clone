@@ -31,7 +31,8 @@ function Login({ handleSignIn }) {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      // const data = await response.json();
+      const data = response.json();
       if (response.ok) {
         alert("Login Success.Welcome to Tinflix 😁");
 
@@ -45,6 +46,26 @@ function Login({ handleSignIn }) {
       console.error("Error during login:", error);
       alert("An error occurred during login.😵");
     }
+    // const validCredentials = {
+    //   email: "maina@you.com",
+    //   password: "123",
+    // };
+  
+    // // Check if the entered credentials match the hardcoded ones
+    // if (
+    //   formData.email === validCredentials.email &&
+    //   formData.password === validCredentials.password
+    // ) {
+    //   alert("Login Success. Welcome to Tinflix 😁");
+  
+    //   // Simulate sign-in (this could set some state, localStorage, etc.)
+    //   handleSignIn();
+  
+    //   // Navigate to the profile list page after successful login
+    //   navigate("/profilelist");
+    // } else {
+    //   alert("Invalid email address or password 😵");
+    // }
   };
 
   return (

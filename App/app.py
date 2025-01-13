@@ -1,11 +1,12 @@
 from flask import Flask, send_from_directory, session, send_file, request, jsonify, redirect, url_for
-from flask_restful import Api
+# from flask_restful import Api
 from models import  User, db , ma
 from flask_migrate import Migrate
 from flask_cors import CORS, cross_origin
 from werkzeug.security import generate_password_hash
 import os
 import logging
+import sys
 
 from os import environ
 import resend
@@ -14,14 +15,14 @@ import resend
 from dotenv import load_dotenv
 load_dotenv()
 
-resend.api_key = os.environ["RESEND_API_KEY"] #export in the terminal export RESEND_API_KEY='re_YQT3zb5C_9pkqXYBdQWWKveUHqZGp57eW'
+resend.api_key = os.environ["RESEND_API_KEY"] 
 logging.basicConfig(level=logging.DEBUG)
 
 resend.api_key = os.getenv("RESEND_API_KEY")
 
 app = Flask(__name__)
-api = Api(app)
-
+# api = Api(app)
+# print(Api)
 #API_KEY = environ.get('RESEND_API_KEY')
 
 # resend = Resend('re_MAmoPkk5_Dg4USAzdGwSoVGFNVZi434jA')
@@ -66,6 +67,9 @@ with app.app_context():
 #     else:
 #         return send_from_directory (os.path.join(BASEDIR,'static/index.html'), path)
 
+@app.route('/')
+def index():
+    return 'Welcome to Tinflix'
 
 @app.route('/movies', methods=['OPTIONS'])
 def handle_options():
@@ -84,9 +88,7 @@ def handle_payments_options():
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     }
     
-@app.route('/')
-def index():
-    return 'Welcome to Tinflix'
+
 
 # @app.route('/send-email', methods=['POST'])
 # def send_email():
@@ -177,6 +179,6 @@ def logout():
 # api.add_resource(MoviesResource,  '/api/movies')
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     # db.create_all()
     app.run(debug=True, host='0.0.0.0')

@@ -17,7 +17,20 @@ function App() {
     checkStorage();
     return () => {};
   }, []);
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = ''; // Standard for modern browsers
+    };
 
+    // Add event listener
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
   function checkStorage() {
     if (localStorage.getItem('user')) {
       setIsLoggedIn(true);
