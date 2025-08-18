@@ -26,3 +26,4 @@ dist-ssr
 *.sw?
 tinflix/.env
 tinflix/App/.env
+venv
