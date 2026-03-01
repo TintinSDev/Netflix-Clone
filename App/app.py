@@ -34,8 +34,8 @@ BASEDIR = os.path.join(os.path.dirname(__file__))
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@localhost:2000/netflix'
 
 # For remote connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@38.182.86.186:2000/netflix'
-
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:qwerty@38.182.86.186:2000/netflix'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tinflix.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # CORS(app)
@@ -182,3 +182,5 @@ if __name__ == '__main__':
     # with app.app_context():
     #     # db.create_all()
     app.run(debug=True, host='0.0.0.0')
+    
+#uvicorn app:app --host 0.0.0.0 --port 5000 --reload

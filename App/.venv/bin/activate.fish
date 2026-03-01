@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/martin/Projects/Netflix/tinflix/App/.venv
+set -gx VIRTUAL_ENV /mnt/sda5/Projects/Netflix/tinflix/App/.venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
