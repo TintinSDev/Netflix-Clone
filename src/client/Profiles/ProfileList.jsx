@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Proptypes from "prop-types";
 import "./AddProfile";
-import deleteIcon from "./icons/delete.ico";
+import deleteIcon from "/icons/delete.ico";
 import './ProfileList.css';
 
 const ProfileList = ({ profiles, deleteProfile }) => {

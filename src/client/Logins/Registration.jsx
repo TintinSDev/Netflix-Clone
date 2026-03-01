@@ -17,33 +17,49 @@ function Registration({ handleRegister }) {
 
   
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // if (!formData.role) {
+  //   //   alert("Please select a role.");
+  //   //   return;
+  //   // }
+  //   try {
+  //      const response = await fetch("http://127.0.0.1:5000/register", {
+  //     //const response = await fetch("https://tinflix.vercel.app/api/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       alert("Registration Successful 😁 ");
+  //       handleRegister(); // Call the handleRegister function passed as a prop
+  //       navigate("/login"); // Redirect to the login page after successful registration
+  //     } else {
+  //       alert(data.error || "An error occurred during registration 😣");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during registration:", error);
+  //     alert("An error occurred during registration. 😵");
+  //   }
+  // };
+  // 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if (!formData.role) {
     //   alert("Please select a role.");
     //   return;
     // }
-    try {
-       const response = await fetch("http://127.0.0.1:5000/register", {
-      //const response = await fetch("https://tinflix.vercel.app/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      if (response.ok) {
+    
+      if (formData.username && formData.email && formData.password) {
         alert("Registration Successful 😁 ");
         handleRegister(); // Call the handleRegister function passed as a prop
         navigate("/login"); // Redirect to the login page after successful registration
       } else {
-        alert(data.error || "An error occurred during registration 😣");
+        alert("An error occurred during registration 😣");
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("An error occurred during registration. 😵");
-    }
   };
 
   return (

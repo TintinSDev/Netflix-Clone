@@ -5,14 +5,15 @@ import './AddProfile.css';
 
 
 const avatars = [
-  '/src/client/Profiles/icons/avatar1.png',
-  '/src/client/Profiles/icons/avatar2.png',
-  '/src/client/Profiles/icons/avatar3.png',
-  '/src/client/Profiles/icons/avatar4.png',
-  '/src/client/Profiles/icons/avatar5.png',
-  '/src/client/Profiles/icons/avatar6.png',
-  '/src/client/Profiles/icons/avatar7.png',
-  '/src/client/Profiles/icons/avatar8.png',
+  '/icons/avatar1.png',
+  '/icons/avatar2.png',
+  '/icons/avatar3.png',
+  '/icons/avatar4.png',
+  '/icons/avatar5.png',
+  '/icons/avatar6.png',
+  '/icons/avatar7.png',
+  '/icons/avatar8.png',
+
 ];
 const AddProfile = ({ addProfile }) => {
   const [name, setName] = useState('');
